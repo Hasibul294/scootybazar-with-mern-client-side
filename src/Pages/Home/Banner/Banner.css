@@ -1,0 +1,55 @@
+ .banner-text {
+     font-family: 'Poppins',
+     sans-serif;
+     width: 500px;
+ }
+
+ .banner-text h1{
+     color: white;
+     font-size: 60px;
+     font-weight: 600;
+ }
+
+ .banner-btn{
+     margin: 20px 0 40px 0;
+ }
+ .banner-btn button{
+     padding: 10px 40px;
+      font-size: 15px;
+ }
+
+ @media only screen and (max-width: 480px) {
+     .banner-text {
+         font-family: 'Poppins',
+             sans-serif;
+         width: 200px;
+     }
+
+     .banner-text h1 {
+         font-size: 15px;
+         font-weight: 600;
+     }
+     .banner-btn {
+         margin: 0px 0 10px 0;
+         padding: 5px 0 0 0;
+     }
+
+     .banner-btn button {
+         padding: 5px 20px;
+         font-size: 8px;
+     }
+ }
+
+ @media only screen and (min-width: 481px) and (max-width: 768px) {
+     .banner-text {
+         font-family: 'Poppins',
+             sans-serif;
+         width: 400px;
+     }
+
+     .banner-text h1 {
+         font-size: 30px;
+         font-weight: 600;
+     }
+
+ }
