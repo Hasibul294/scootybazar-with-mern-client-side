@@ -1,0 +1,18 @@
+.book-image {
+    width: 80%;
+    height: auto;
+}
+
+.book-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.book-form input,
+textarea {
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    border: 1px solid #198754;
+    border-radius: 5px;
+}

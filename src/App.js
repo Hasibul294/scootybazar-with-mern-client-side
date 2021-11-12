@@ -1,14 +1,15 @@
-import logo from "./logo.svg";
 import "./App.css";
-import AuthProvider from "./Pages/Login/PrivateRoute/PrivateRoute";
+import AuthProvider from "./context/AuthProvider";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Navigation from "./Pages/Shared/Navigation/Navigation";
 import Home from "./Pages/Home/Home/Home";
-import Products from "./Pages/Home/Products/Products";
 import Contact from "./Pages/Contact/Contact";
 import Login from "./Pages/Login/Login/Login";
 import Register from "./Pages/Login/Register/Register";
 import Footer from "./Pages/Shared/Footer/Footer";
+import PrivateRoute from "./Pages/Login/PrivateRoute/PrivateRoute";
+import BookProduct from "./Pages/BookProduct/BookProduct";
+import AllProducts from "./Pages/AllProducts/AllProducts";
 
 function App() {
   return (
@@ -24,12 +25,12 @@ function App() {
               <Home></Home>
             </Route>
             <Route exact path="/products">
-              <Products></Products>
+              <AllProducts></AllProducts>
             </Route>
-            {/* <PrivateRoute exact path="/packages/:id">
-              <BookPackage></BookPackage>
+            <PrivateRoute exact path="/product/:id">
+              <BookProduct></BookProduct>
             </PrivateRoute>
-            <PrivateRoute exact path="/addNewPackage">
+            {/* <PrivateRoute exact path="/addNewPackage">
               <AddPackage></AddPackage>
             </PrivateRoute>
             <PrivateRoute exact path="/myOrder">

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Spinner } from "react-bootstrap";
-import Product from "../Product/Product";
+import Product from "../Home/Product/Product";
 
-const Products = () => {
+const AllProducts = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -27,7 +27,7 @@ const Products = () => {
       <hr className="border-bottom border-4 border-success mx-auto w-25" />
       <Container>
         <Row className="g-4 my-3">
-          {products.slice(0, 6).map((product) => (
+          {products.map((product) => (
             <Product key={product.id} product={product}></Product>
           ))}
         </Row>
@@ -36,4 +36,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default AllProducts;
