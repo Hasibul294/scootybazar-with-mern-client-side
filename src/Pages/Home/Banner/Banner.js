@@ -38,7 +38,7 @@ const Banner = () => {
               <Nav.Link
                 className="banner-btn px-0 d-block text-start"
                 as={NavLink}
-                to="/register"
+                to="/products"
               >
                 <button className="btn btn-success text-white">Get More</button>
               </Nav.Link>
@@ -56,7 +56,7 @@ const Banner = () => {
               <Nav.Link
                 className="banner-btn px-0 d-block text-end"
                 as={NavLink}
-                to="/register"
+                to="/products"
               >
                 <button className="btn btn-success text-white">Get More</button>
               </Nav.Link>

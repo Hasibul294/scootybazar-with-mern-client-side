@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
+import bg from "../../../images/scooter.png";
 
 const Navigation = () => {
   const { user, logOut } = useAuth();
@@ -16,12 +17,11 @@ const Navigation = () => {
       >
         <Container>
           <Navbar.Brand as={NavLink} to="/home">
-            <div className="d-flex">
-              <img style={{ width: "50px" }} className="me-2" src="" alt="" />
+            <div className="d-flex align-items-center">
+              <img style={{ width: "40px" }} className="me-2" src={bg} alt="" />
               <div>
                 <p className="mb-0 lh-1">
-                  <span className="ms-2 mb-0">Scooty.</span>
-                  Bazar
+                  Scooty<span className="text-success fw-bold mb-0">Bazar</span>
                 </p>
               </div>
             </div>

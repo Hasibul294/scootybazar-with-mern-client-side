@@ -8,7 +8,7 @@ const Reviews = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/reviews")
+    fetch("https://powerful-beyond-32668.herokuapp.com/reviews")
       .then((res) => res.json())
       .then((data) => {
         setReviews(data);
@@ -24,7 +24,7 @@ const Reviews = () => {
       <Container>
         <Row className="g-4 py-3 my-4">
           {reviews.map((review) => (
-            <Col className="" md={4}>
+            <Col key={review._id} className="" md={4}>
               <div className="shadow rounded-3 p-3 d-flex justify-content-center align-items-start">
                 <img className="me-3" src={img} alt="" />
                 <div>
