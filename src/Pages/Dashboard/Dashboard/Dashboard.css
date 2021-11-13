@@ -1,0 +1,12 @@
+.dashboard-container{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.sidebar{
+    text-align: start;
+    height: 100vh;
+    width: 150px;
+    background-color: gainsboro;
+}
+.sidebar li:hover{
+    background-color: aqua;
+}

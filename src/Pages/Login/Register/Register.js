@@ -1,46 +1,20 @@
-import { Link, useLocation, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 
 const Register = () => {
   const {
     errorRegister,
-    setErrorRegister,
-    setUserName,
-    signInUsingGoogle,
-    setIsLoading,
     handleName,
     handleEmail,
     handlePassword,
     handleRegister,
   } = useAuth();
 
-  const location = useLocation();
   const history = useHistory();
-  console.log(location.state?.from);
-  const redirect_url = location.state?.from || "/home";
 
   const register = (e) => {
-    handleRegister(e)
-      ?.then((result) => {
-        setErrorRegister("");
-        setUserName();
-        alert("User Registration Successfully");
-        history.push("/login");
-      })
-      .catch((error) => {
-        setErrorRegister(error.message);
-      });
-  };
-
-  const handleGoogleLogin = () => {
-    signInUsingGoogle()
-      ?.then((result) => {
-        history.push(redirect_url);
-      })
-      .catch((error) => {
-        console.log("Error", error);
-      })
-      .finally(() => setIsLoading(false));
+    handleRegister();
+    e.preventDefault();
   };
 
   return (
@@ -108,7 +82,7 @@ const Register = () => {
               State
             </label>
             <select id="inputState" className="form-select">
-              <option selected>Choose...</option>
+              <option defaultValue="choose">Choose...</option>
               <option>...</option>
             </select>
           </div>

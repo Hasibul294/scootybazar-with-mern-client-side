@@ -12,6 +12,7 @@ const Login = () => {
     handleEmail,
     handlePassword,
     handleLogin,
+    saveUser,
   } = useAuth();
 
   const location = useLocation();
@@ -34,6 +35,8 @@ const Login = () => {
   const handleGoogleLogin = () => {
     signInUsingGoogle()
       ?.then((result) => {
+        const user = result.user;
+        saveUser(user.email, user.displayName, "PUT");
         history.push(redirect_url);
       })
       .catch((error) => {

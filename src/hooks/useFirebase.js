@@ -10,6 +10,7 @@ import {
   signOut,
 } from "firebase/auth";
 import initializeFirebase from "../Pages/Login/Firebase/firebase.init";
+import { useHistory } from "react-router-dom";
 
 initializeFirebase();
 
@@ -22,13 +23,10 @@ const useFirebase = () => {
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
-  console.log(user);
-
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
 
   const handleName = (e) => {
-    console.log(e.target.value);
     setName(e.target.value);
   };
 
@@ -53,9 +51,7 @@ const useFirebase = () => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  const handleRegister = (e) => {
-    console.log("i am register");
-    e.preventDefault();
+  const handleRegister = () => {
     if (!/(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,}$/.test(password)) {
       console.log("this is valid");
       setErrorRegister(
@@ -63,7 +59,20 @@ const useFirebase = () => {
       );
       return;
     }
-    return createUserWithEmailAndPassword(auth, email, password);
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((result) => {
+        console.log(result);
+        setErrorRegister("");
+        const newUser = { email, displayName: name };
+        setUser(newUser);
+        //save user to database
+        saveUser(email, name, "POST");
+        setUserName();
+        alert("User Registration Successfully");
+      })
+      .catch((error) => {
+        setErrorRegister(error.message);
+      });
   };
 
   const setUserName = () => {
@@ -71,7 +80,6 @@ const useFirebase = () => {
   };
 
   const signInUsingGoogle = () => {
-    console.log("i am google sign in");
     setIsLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
@@ -98,7 +106,19 @@ const useFirebase = () => {
     return () => unsubscribed;
   }, [auth]);
 
+  const saveUser = (email, displayName, method) => {
+    const user = { email, displayName };
+    fetch("http://localhost:5000/users", {
+      method: method,
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    }).then();
+  };
+
   return {
+    name,
     user,
     setUser,
     errorLogin,
@@ -115,6 +135,7 @@ const useFirebase = () => {
     handleLogin,
     signInUsingGoogle,
     logOut,
+    saveUser,
   };
 };
 
