@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Spinner } from "react-bootstrap";
 import Product from "../Home/Product/Product";
+import Footer from "../Shared/Footer/Footer";
 import Navigation from "../Shared/Navigation/Navigation";
 
 const AllProducts = () => {
@@ -36,6 +37,7 @@ const AllProducts = () => {
           </Row>
         </Container>
       </div>
+      <Footer></Footer>
     </div>
   );
 };

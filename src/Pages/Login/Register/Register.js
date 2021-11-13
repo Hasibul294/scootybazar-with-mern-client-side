@@ -1,5 +1,7 @@
 import { Link, useHistory } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
+import Footer from "../../Shared/Footer/Footer";
+import Navigation from "../../Shared/Navigation/Navigation";
 
 const Register = () => {
   const {
@@ -13,12 +15,13 @@ const Register = () => {
   const history = useHistory();
 
   const register = (e) => {
-    handleRegister();
+    handleRegister(history);
     e.preventDefault();
   };
 
   return (
     <div>
+      <Navigation></Navigation>
       <div className="w-75 mx-auto my-4 text-start">
         <h2 className="text-center mb-3">Please Register</h2>
         <form onSubmit={register} className="row g-3">
@@ -106,6 +109,7 @@ const Register = () => {
         </p>
         <hr />
       </div>
+      <Footer></Footer>
     </div>
   );
 };

@@ -13,7 +13,7 @@ const Products = () => {
         setProducts(data);
         setIsLoading(false);
       });
-  }, []);
+  }, [products]);
   if (isLoading) {
     return (
       <div className="text-center my-5">

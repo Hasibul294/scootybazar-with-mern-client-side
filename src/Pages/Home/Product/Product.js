@@ -1,6 +1,8 @@
 import React from "react";
 import { Card, Col } from "react-bootstrap";
-import Rating from "react-rating";
+// import Rating from "react-rating";
+import Rating from "@mui/material/Rating";
+
 import { useHistory } from "react-router-dom";
 import "./Product.css";
 
@@ -28,10 +30,10 @@ const Product = ({ product }) => {
           <div className="d-flex justify-content-between  align-items-center">
             <p className="text-start text-warning">
               <Rating
-                initialRating={rating}
-                readonly
-                emptySymbol="text-warning far fa-star"
-                fullSymbol="text-warning fas fa-star"
+                name="read-only"
+                value={rating}
+                precision={0.1}
+                readOnly
               />
             </p>
             <p className="text-start">({rating} out of 5)</p>

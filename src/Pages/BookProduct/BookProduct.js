@@ -2,9 +2,12 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import Rating from "react-rating";
+import Rating from "@mui/material/Rating";
+import BikeScooterIcon from "@mui/icons-material/BikeScooter";
+import DateRangeIcon from "@mui/icons-material/DateRange";
 import { useHistory, useParams } from "react-router";
 import useAuth from "../../hooks/useAuth";
+import Footer from "../Shared/Footer/Footer";
 import Navigation from "../Shared/Navigation/Navigation";
 import "./BookProduct.css";
 
@@ -46,12 +49,16 @@ const BookProduct = () => {
                 <img className="book-image" src={product?.img} alt="" />
                 <hr className="text-secondary mb-2" />
                 <div className="text-start d-flex justify-content-between align-items-center">
-                  <h2 className="">
-                    <i className="text-success me-2 fas fa-motorcycle"></i>
+                  <h2>
+                    <BikeScooterIcon
+                      sx={{ marginRight: 1, color: "green", fontSize: 40 }}
+                    ></BikeScooterIcon>
                     {product?.name}
                   </h2>
                   <p>
-                    <i className="fs-6 fw-lighter me-1 fas fa-calendar-alt"></i>
+                    <DateRangeIcon
+                      sx={{ color: "green", fontSize: 30 }}
+                    ></DateRangeIcon>
                     {product?.model}
                   </p>
                 </div>
@@ -66,12 +73,12 @@ const BookProduct = () => {
                   </h3>
                   <hr className="text-secondary mb-2" />
                   <div className="text-start d-flex justify-content-between">
-                    <div>
+                    <div className="d-flex">
                       <Rating
-                        initialRating={product?.rating}
-                        readonly
-                        emptySymbol="text-warning far fa-star"
-                        fullSymbol="text-warning fas fa-star"
+                        name="read-only"
+                        value={product?.rating}
+                        precision={0.1}
+                        readOnly
                       />
                       {product?.rating > 4.5 ? (
                         <span> (Excellent)</span>
@@ -120,6 +127,7 @@ const BookProduct = () => {
           </Row>
         </Container>
       </div>
+      <Footer></Footer>
     </div>
   );
 };

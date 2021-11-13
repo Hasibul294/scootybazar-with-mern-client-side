@@ -10,7 +10,6 @@ import {
   signOut,
 } from "firebase/auth";
 import initializeFirebase from "../Pages/Login/Firebase/firebase.init";
-import { useHistory } from "react-router-dom";
 
 initializeFirebase();
 
@@ -22,6 +21,7 @@ const useFirebase = () => {
   const [errorRegister, setErrorRegister] = useState("");
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [admin, setAdmin] = useState(false);
 
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
@@ -41,8 +41,7 @@ const useFirebase = () => {
   const handleLogin = (e) => {
     console.log("this is login");
     e.preventDefault();
-    if (!/(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,}$/.test(password)) {
-      console.log("this is valid");
+    if (!/(?=.*?[0-9]).{6,}$/.test(password)) {
       setErrorLogin(
         "Password Must have at least one Upper, Lower case and number and 6 characters long"
       );
@@ -51,9 +50,8 @@ const useFirebase = () => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  const handleRegister = () => {
-    if (!/(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,}$/.test(password)) {
-      console.log("this is valid");
+  const handleRegister = (history) => {
+    if (!/(?=.*?[0-9]).{6,}$/.test(password)) {
       setErrorRegister(
         "Must have at least one Upper,Lower case and number, 6 characters long"
       );
@@ -69,6 +67,7 @@ const useFirebase = () => {
         saveUser(email, name, "POST");
         setUserName();
         alert("User Registration Successfully");
+        history.push("/home");
       })
       .catch((error) => {
         setErrorRegister(error.message);
@@ -106,6 +105,12 @@ const useFirebase = () => {
     return () => unsubscribed;
   }, [auth]);
 
+  useEffect(() => {
+    fetch(`http://localhost:5000/users/${user.email}`)
+      .then((res) => res.json())
+      .then((data) => setAdmin(data.admin));
+  }, [user.email]);
+
   const saveUser = (email, displayName, method) => {
     const user = { email, displayName };
     fetch("http://localhost:5000/users", {
@@ -120,6 +125,7 @@ const useFirebase = () => {
   return {
     name,
     user,
+    admin,
     setUser,
     errorLogin,
     setErrorLogin,
