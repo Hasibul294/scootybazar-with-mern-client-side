@@ -5,7 +5,7 @@ import Rating from "@mui/material/Rating";
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch("https://powerful-beyond-32668.herokuapp.com/reviews")
@@ -14,7 +14,7 @@ const Reviews = () => {
         setReviews(data);
         setIsLoading(false);
       });
-  }, []);
+  }, [setIsLoading]);
 
   return (
     <div className="my-5 py-5 bg-light">

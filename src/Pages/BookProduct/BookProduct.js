@@ -76,12 +76,14 @@ const BookProduct = () => {
                   <hr className="text-secondary mb-2" />
                   <div className="text-start d-flex justify-content-between">
                     <div className="d-flex">
-                      <Rating
-                        name="read-only"
-                        value={product?.rating}
-                        precision={0.1}
-                        readOnly
-                      />
+                      <p className="text-start text-warning">
+                        <Rating
+                          name="read-only"
+                          value={product?.rating}
+                          precision={0.1}
+                          readOnly
+                        />
+                      </p>
                       {product?.rating > 4.5 ? (
                         <span> (Excellent)</span>
                       ) : (
