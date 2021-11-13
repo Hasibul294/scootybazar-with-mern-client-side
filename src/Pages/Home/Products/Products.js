@@ -7,7 +7,7 @@ const Products = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://powerful-beyond-32668.herokuapp.com/products")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
@@ -23,7 +23,7 @@ const Products = () => {
   }
   return (
     <div className="my-5 p-4">
-      <h2 className="mb-0">Our Brand New Scooty</h2>
+      <h2 className="mb-0 text-primary">Our Brand New Scooty</h2>
       <hr className="border-bottom border-4 border-success mx-auto w-25" />
       <Container>
         <Row className="g-4 my-3">

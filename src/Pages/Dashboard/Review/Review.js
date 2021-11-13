@@ -10,12 +10,14 @@ const Review = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    axios.post("http://localhost:5000/review", data).then((res) => {
-      if (res.data.insertedId) {
-        alert("Review Added Successfully");
-        reset();
-      }
-    });
+    axios
+      .post("https://powerful-beyond-32668.herokuapp.com/review", data)
+      .then((res) => {
+        if (res.data.insertedId) {
+          alert("Review Added Successfully");
+          reset();
+        }
+      });
   };
   return (
     <div className="container p-4">

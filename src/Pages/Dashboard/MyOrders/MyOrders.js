@@ -9,7 +9,7 @@ const MyOrders = () => {
   const id = user.email;
   //   console.log(email);
   useEffect(() => {
-    fetch(`http://localhost:5000/orders/${id}`)
+    fetch(`https://powerful-beyond-32668.herokuapp.com/orders/${id}`)
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, [id]);

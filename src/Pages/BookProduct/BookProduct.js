@@ -20,17 +20,19 @@ const BookProduct = () => {
 
   const onSubmit = (data) => {
     data.productName = product.name;
-    axios.post("http://localhost:5000/product/booking", data).then((res) => {
-      if (res.data.insertedId) {
-        alert("Your Order is Confirmed");
-        reset();
-        history.push("/home");
-      }
-    });
+    axios
+      .post("https://powerful-beyond-32668.herokuapp.com/product/booking", data)
+      .then((res) => {
+        if (res.data.insertedId) {
+          alert("Your Order is Confirmed");
+          reset();
+          history.push("/home");
+        }
+      });
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/product/${id}`)
+    fetch(`https://powerful-beyond-32668.herokuapp.com/product/${id}`)
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, [id]);

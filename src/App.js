@@ -9,6 +9,7 @@ import PrivateRoute from "./Pages/Login/PrivateRoute/PrivateRoute";
 import BookProduct from "./Pages/BookProduct/BookProduct";
 import AllProducts from "./Pages/AllProducts/AllProducts";
 import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard";
+import NotFound from "./Pages/NotFound/NotFound";
 
 function App() {
   return (
@@ -31,15 +32,6 @@ function App() {
             <PrivateRoute path="/dashboard">
               <Dashboard></Dashboard>
             </PrivateRoute>
-            {/* <PrivateRoute exact path="/addNewPackage">
-              <AddPackage></AddPackage>
-            </PrivateRoute>
-            <PrivateRoute exact path="/myOrder">
-              <MyOrders></MyOrders>
-            </PrivateRoute>
-            <PrivateRoute exact path="/manageOrder">
-              <ManageOrder></ManageOrder>
-            </PrivateRoute> */}
             <Route path="/contact">
               <Contact></Contact>
             </Route>
@@ -49,9 +41,9 @@ function App() {
             <Route path="/register">
               <Register></Register>
             </Route>
-            {/* <Route path="*">
+            <Route path="*">
               <NotFound></NotFound>
-            </Route> */}
+            </Route>
           </Switch>
         </BrowserRouter>
       </AuthProvider>

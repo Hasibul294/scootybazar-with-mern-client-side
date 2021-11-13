@@ -8,12 +8,14 @@ const AddProduct = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    axios.post("http://localhost:5000/products", data).then((res) => {
-      if (res.data.insertedId) {
-        alert("New Scooty Added Successfully");
-        reset();
-      }
-    });
+    axios
+      .post("https://powerful-beyond-32668.herokuapp.com/products", data)
+      .then((res) => {
+        if (res.data.insertedId) {
+          alert("New Scooty Added Successfully");
+          reset();
+        }
+      });
   };
   return (
     <div className="container">

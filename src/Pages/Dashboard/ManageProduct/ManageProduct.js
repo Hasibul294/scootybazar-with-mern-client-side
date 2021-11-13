@@ -4,7 +4,7 @@ import { Col, Row } from "react-bootstrap";
 const ManageProduct = () => {
   const [product, setProduct] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://powerful-beyond-32668.herokuapp.com/products")
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, [product]);
@@ -14,7 +14,7 @@ const ManageProduct = () => {
       "Are you sure, want to delete this Product?"
     );
     if (proceed) {
-      const url = `http://localhost:5000/products/${id}`;
+      const url = `https://powerful-beyond-32668.herokuapp.com/products/${id}`;
       fetch(url, {
         method: "DELETE",
       })

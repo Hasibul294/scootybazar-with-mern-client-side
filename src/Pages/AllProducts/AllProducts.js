@@ -9,7 +9,7 @@ const AllProducts = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://powerful-beyond-32668.herokuapp.com/products")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
